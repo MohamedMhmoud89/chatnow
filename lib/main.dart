@@ -2,10 +2,17 @@ import 'package:chatnow/ui/home/Home_Screen.dart';
 import 'package:chatnow/ui/login/Login_Screen.dart';
 import 'package:chatnow/ui/register/Register_Screen.dart';
 import 'package:chatnow/ui/splash/Splash_Screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-void main() {
+import 'firebase/firebase_options.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
