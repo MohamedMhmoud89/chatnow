@@ -1,11 +1,20 @@
+import 'package:chatnow/ui/add_room/Add_Room_Screen.dart';
+import 'package:chatnow/ui/chat/Chat_Thread.dart';
 import 'package:chatnow/ui/home/Home_Screen.dart';
 import 'package:chatnow/ui/login/Login_Screen.dart';
 import 'package:chatnow/ui/register/Register_Screen.dart';
 import 'package:chatnow/ui/splash/Splash_Screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-void main() {
+import 'firebase_options.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -41,7 +50,9 @@ class MyApp extends StatelessWidget {
         SplashScreen.routeName: (_) => SplashScreen(),
         LoginScreen.routeName: (_) => LoginScreen(),
         RegisterScreen.routeName: (_) => RegisterScreen(),
-        HomeScreen.routeName: (_) => HomeScreen()
+        HomeScreen.routeName: (_) => HomeScreen(),
+        AddRoomScreen.routeName: (_) => AddRoomScreen(),
+        ChatThread.routeName: (_) => ChatThread(),
       },
     );
   }
